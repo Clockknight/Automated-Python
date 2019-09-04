@@ -1,0 +1,112 @@
+
+Q:
+
+Why are functions advantageous to have in your programs?
+
+A:
+
+To reduce typing, especially for redundant code.
+
+Q:
+
+When does the code in a function execute: when the function is defined or when the function is called?
+
+A:
+
+When the function is called.
+
+Q:
+
+What statement creates a function?
+
+A:
+
+def function(arguments)
+
+Q:
+
+What is the difference between a function and a function call?
+
+A:
+
+A function is essentially a shortcut to code. A function call uses this shortcut.
+
+Q:
+
+How many global scopes are there in a Python program? How many local scopes?
+
+A:
+
+There is one global scope, and as many local scopes as there are functions.
+
+Q:
+
+What happens to variables in a local scope when the function call returns?
+
+A:
+
+Once the function call returns, the local scope's variables are
+
+Q:
+
+What is a return value? Can a return value be part of an expression?
+
+A:
+
+A return value is a value that is returned once the function is completed.
+
+Q:
+
+If a function does not have a return statement, what is the return value of a call to that function?
+
+A:
+
+It will return a none value.
+
+Q:
+
+How can you force a variable in a function to refer to the global variable?
+
+A:
+
+Define it as global 'variable'
+
+Q:
+
+What is the data type of None?
+
+A:
+
+NoneType
+
+Q:
+
+What does the import areallyourpetsnamederic statement do?
+
+A:
+
+It would import the areallyourpetsnamederic module.
+
+Q:
+
+If you had a function named bacon() in a module named spam, how would you call it after importing spam?
+
+A:
+
+spam.bacon()
+
+Q:
+
+How can you prevent a program from crashing when it gets an error?
+
+A:
+
+By using a try and except clause.
+
+Q:
+
+What goes in the try clause? What goes in the except clause?
+
+A:
+
+The try clause tests the code that is potentially crashing the program. The except clause defines what happens if the specific error occurs. 
