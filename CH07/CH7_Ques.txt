@@ -3,77 +3,155 @@ Q:
 
 1. What is the function that creates Regex objects?
 
+A:
+
+re.compile()
+
 Q:
 
 2. Why are raw strings often used when creating Regex objects?
+
+A:
+
+To avoid usage of escape characters.
 
 Q:
 
 3. What does the search() method return?
 
+A:
+
+A Match object or None.
+
 Q:
 
 4. How do you get the actual strings that match the pattern from a Match object?
+
+A:
+
+With re.compile() to find a pattern
+object.search() to find that pattern within a chunk of text
+objectTwo.group is now the string that was matched the pattern
 
 Q:
 
 5. In the regex created from r'(\d\d\d)-(\d\d\d-\d\d\d\d)', what does group 0 cover? Group 1? Group 2?
 
+A:
+
+Group 0 covers both groups.
+
 Q:
 
 6. Parentheses and periods have specific meanings in regular expression syntax. How would you specify that you want a regex to match actual parentheses and period characters?
+
+A:
+
+Using the parentheses escape characters
 
 Q:
 
 7. The findall() method returns a list of strings or a list of tuples of strings. What makes it return one or the other?
 
+A:
+
+findall will return tuples if there are groups in the regular expression
+
 Q:
 
 8. What does the | character signify in regular expressions?
+
+A:
+
+As an 'or' operator
 
 Q:
 
 9. What two things does the ? character signify in regular expressions?
 
+A:
+
+An 'optional' group, or a nongreedy match.
+
 Q:
 
 10. What is the difference between the + and * characters in regular expressions?
+
+A:
+
++ matches >=1, * matches >=0
 
 Q:
 
 11. What is the difference between {3} and {3,5} in regular expressions?
 
+A:
+
+{3} matches to 3 instances, {3,5} will match 3-5 instances.
+
 Q:
 
 12. What do the \d, \w, and \s shorthand character classes signify in regular expressions?
+
+A:
+
+0-9; letters, digits, and underscore characters; space, tab, and newline characters
 
 Q:
 
 13. What do the \D, \W, and \S shorthand character classes signify in regular expressions?
 
+A:
+
+The opposite of the lowercase versions of the above answers.
+
 Q:
 
 14. How do you make a regular expression case-insensitive?
+
+A:
+
+pass re.I as a second argument.
 
 Q:
 
 15. What does the . character normally match? What does it match if re.DOTALL is passed as the second argument to re.compile()?
 
+A:
+
+Anything besides a newline. when re.DOTALL is passed, everything will be matched.
+
 Q:
 
 16. What is the difference between these two: .* and .*?
+
+A:
+
+.* is greedy, where .*? is nongreedy
 
 Q:
 
 17. What is the character class syntax to match all numbers and lowercase letters?
 
+A:
+
+\d|\w
+
 Q:
 
 18. If numRegex = re.compile(r'\d+'), what will numRegex.sub('X', '12 drummers, 11 pipers, five rings, 3 hens') return?
 
+A:
+
+'X drummers, X pipers, five rings, X hens'
+
 Q:
 
 19. What does passing re.VERBOSE as the second argument to re.compile() allow you to do?
+
+A:
+
+Insert the regular expression over multiple lines.
 
 Q:
 
@@ -90,6 +168,14 @@ but not the following:
 '12,34,567' (which has only two digits between the commas)
 
 '1234' (which lacks commas)
+
+A:
+
+re.compile(r'''(
+\d{,3}?
+,
+\d{,3}
+)+''', re.VERBOSE)
 
 Q:
 
@@ -110,6 +196,13 @@ but not the following:
 'Nakamoto' (which has no first name)
 
 'Satoshi nakamoto' (where Nakamoto is not capitalized)
+
+A:
+
+re.compile(r'''(
+[A-Z]\w+            #Firstname with capital first character
+(\sNakamoto)$       #Must end with ' Nakamoto'
+)''', re.VERBOSE)
 
 Q:
 
@@ -132,3 +225,14 @@ but not the following:
 'ALICE THROWS FOOTBALLS.'
 
 'Carol eats 7 cats.'
+
+A:
+
+re.compile(r'''(
+(Alice|Bob|Carol)
+\s
+(eats|pets|throws)
+\s
+(apples|baseballs|cats)
+\.
+)''', re.VERBOSE|re.I)
