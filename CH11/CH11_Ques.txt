@@ -4,7 +4,10 @@ Q:
 
 A:
 
-
+-Opens to a specific page
+-Downloads web pages
+-Parses html
+-launches and controls a browser
 
 Q:
 
@@ -12,7 +15,8 @@ Q:
 
 A:
 
-
+A Response object.
+By passing wb as the second argument to open()
 
 Q:
 
@@ -20,7 +24,7 @@ Q:
 
 A:
 
-
+raise_for_status()
 
 Q:
 
@@ -28,7 +32,7 @@ Q:
 
 A:
 
-
+raise_for_status()
 
 Q:
 
@@ -36,7 +40,15 @@ Q:
 
 A:
 
+Call requests.get() to download the file.
 
+Call open() with 'wb' to create a new file in write binary mode.
+
+Loop over the Response object’s iter_content() method.
+
+Call write() on each iteration to write the content to the file.
+
+Call close() to close the file.
 
 Q:
 
@@ -44,7 +56,7 @@ Q:
 
 A:
 
-
+f12
 
 Q:
 
@@ -52,7 +64,7 @@ Q:
 
 A:
 
-
+Inspect element
 
 Q:
 
@@ -60,7 +72,7 @@ Q:
 
 A:
 
-
+soup.select('#main')
 
 Q:
 
@@ -68,7 +80,7 @@ Q:
 
 A:
 
-
+soup.select('.highlight')
 
 Q:
 
@@ -76,7 +88,7 @@ Q:
 
 A:
 
-
+soup.select('div > div')
 
 Q:
 
@@ -84,7 +96,7 @@ Q:
 
 A:
 
-
+soup.select('button[type="favorite"]')
 
 Q:
 

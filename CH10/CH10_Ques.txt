@@ -5,7 +5,7 @@ Q:
 
 A:
 
-
+assert spam >= 10, 'Error'
 
 Q:
 
@@ -13,7 +13,7 @@ Q:
 
 A:
 
-
+assert breakfast == (eggs.lower() == bacon.lower()), 'Error'
 
 Q:
 
@@ -21,7 +21,7 @@ Q:
 
 A:
 
-
+assert testAssertion == False, 'Error'
 
 Q:
 
@@ -29,7 +29,8 @@ Q:
 
 A:
 
-
+import logging
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s - %(levelname)s
 
 Q:
 
@@ -37,7 +38,9 @@ Q:
 
 A:
 
-
+import logging
+logging.basicConfig(filename='myProgramLog.txt', level=logging.DEBUG, format='
+%(asctime)s - %(levelname)s - %(message)s')
 
 Q:
 
@@ -45,7 +48,7 @@ Q:
 
 A:
 
-
+DEBUG, INFO, WARNING, ERROR, CRITICAL
 
 Q:
 
@@ -53,7 +56,7 @@ Q:
 
 A:
 
-
+logging.disable()
 
 Q:
 
@@ -61,7 +64,7 @@ Q:
 
 A:
 
-
+Because it is intended only for the developer to view, not the user.
 
 Q:
 
@@ -69,7 +72,9 @@ Q:
 
 A:
 
-
+Step moves to the next line of code
+Over will move to the next line of code, working through any functions
+Out will keep executing lines of code until the program returns from the current function
 
 Q:
 
@@ -77,7 +82,7 @@ Q:
 
 A:
 
-
+Whenever it terminates or reaches a breakpoint
 
 Q:
 
@@ -85,10 +90,12 @@ Q:
 
 A:
 
-
+A point in the code where the program is forced to stop
 
 Q:
 
 12. How do you set a breakpoint on a line of code in IDLE?
 
 A:
+
+Using *Set Breakpoint*

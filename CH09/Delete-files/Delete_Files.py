@@ -1,8 +1,16 @@
 import os
-import re
 
-variable = ''
+directory = 'C:\\Users\\DELL\\Desktop\\flash'
 
-#Take input to find tree
-#Search tree for files of certain sizes
-#If they pass the check, print their absolute path
+folder = os.path.abspath(directory)
+
+for foldername, subfolders, filenames in os.walk(folder):
+    for filename in filenames:
+        fileSize = os.path.getsize(foldername + '\\' + filename)
+        if int(fileSize) < 100000000:
+           continue
+           os.unlink(filename)
+        print('Deleting ' + filename + '...')
+
+
+print('Done')
