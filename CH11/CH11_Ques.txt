@@ -104,7 +104,7 @@ Q:
 
 A:
 
-
+spam.getText()
 
 Q:
 
@@ -112,7 +112,7 @@ Q:
 
 A:
 
-
+linkElem.attrs
 
 Q:
 
@@ -120,7 +120,7 @@ Q:
 
 A:
 
-
+from selenium import webdriver
 
 Q:
 
@@ -128,7 +128,7 @@ Q:
 
 A:
 
-
+Respectively. they return the first matching element and they return a list of all matching elements.
 
 Q:
 
@@ -136,7 +136,7 @@ Q:
 
 A:
 
-
+click(), send_keys()
 
 Q:
 
@@ -144,10 +144,12 @@ Q:
 
 A:
 
-
+use submit() on a form
 
 Q:
 
 18. How can you simulate clicking a browser’s Forward, Back, and Refresh buttons with Selenium?
 
 A:
+
+forward(), back(), and refresh() Webdriver respectively

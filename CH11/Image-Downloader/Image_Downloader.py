@@ -1,34 +1,36 @@
-import sys, re, os, requests, bs4
+import requests, os, bs4
 
-def downloadImage(siteURL, category):
+#'url' is the starting url.
+url = 'http://xkcd.com'
+os.makedirs('xkcd', exist_ok=True)      # store comics in ./xkcd
+while not url.endswith('#'):
 
-    os.makedirs(category, exist_ok=True)
+    #Download the page
+    print ('Downloading page %s...' % url)
+    res = requests.get(url)
+    res.raise_for_status()
 
-    res = requests.get(siteURL + "/search?q=" + category)
-    res.raise_for_status
-    soup = bs4.BeautifulSoup(res.text, "html.parser")
+    soup = bs4.BeautifulSoup(res.text)
 
-    reg = re.compile(r'(.*?)b(.jpg)$')
-    images = soup.select('#imagelist img')
-    for img in images:
-        if img.get("alt") == "":
-            source = img.get("src")
-            mo = reg.search(source)
-            if mo != None:
-                newSource = mo.group(1) + mo.group(2)
-                newSource = "https:" + newSource
+    #comic_elem finds the URL of the comic image.
+    comic_elem = soup.select('#comic img')
+    if comic_elem == []:
+        print('Could not find comic image.')
+    else:
+        comic_url = 'http:' + comic_elem[0].get('src')
+        #Download the image.
+        print('Downloading image %s...' % (comic_url))
+        res = requests.get(comic_url)
+        res.raise_for_status()
 
+    #Save the image to ./xkcd.
+    image_file = open(os.path.join('xkcd', os.path.basename(comic_url)), 'wb')
+    for chunk in res.iter_content(100000):
+        image_file.write(chunk)
+    image_file.close()
 
-                imageFile = open(os.path.join(category, os.path.basename(newSource)), "wb")
-                res = requests.get(newSource)
-                res.raise_for_status
-                for chunk in res.iter_content(100000):
-                    imageFile.write(chunk)
-                imageFile.close()
+    #Get the Prev button's url.
+    prev_link = soup.select('a[rel="prev"]')[0]
+    url = 'http://xkcd.com' + prev_link.get('href')
 
-    print("Completed)
-
-
-url = "https://imgur.com/"
-category = "progresspics"
-downloadImage(url, category)
+print ('Done.')
