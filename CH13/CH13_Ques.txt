@@ -4,7 +4,7 @@ Q:
 
 A:
 
-
+File object from open()
 
 Q:
 
@@ -12,7 +12,7 @@ Q:
 
 A:
 
-
+rb for PdfFileReader and wb for PdfFileWriter
 
 Q:
 
@@ -20,7 +20,7 @@ Q:
 
 A:
 
-
+getPage(4)
 
 Q:
 
