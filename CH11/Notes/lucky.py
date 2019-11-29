@@ -17,8 +17,10 @@ soup = bs4.BeautifulSoup(res.text)
 #logging.debug('soup is: ' + str(soup)) 
 
 # TODO: Open a browser tab for each result.
-linkElems = soup.select('a')
-#logging.debug('linkElems = ' + str(linkElems))
+linkElems = soup.find_all(".r a")
+for div in linkElems:
+    print(div.select("a"))
+logging.debug('linkElems = ' + str(linkElems))
 numOpen = min(5, len(linkElems))
 for i in range(numOpen):
     webbrowser.open('http://google.com' + linkElems[i].get('href'))
