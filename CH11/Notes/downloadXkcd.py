@@ -1,8 +1,9 @@
 #! python3
 # downloadXkcd.py - Downloads every single XKCD comic.
 
-import requests, os, bs4, re 
-url = 'https://xkcd.com/2067/'             #starting url
+import requests, os, bs4, re
+
+url = 'https://xkcd.com/1525/'             #starting url
 os.makedirs('xkcd', exist_ok=True)  #store comics in ./xkcd
 while not url.endswith('#'):
     # Download the page.
@@ -19,12 +20,11 @@ while not url.endswith('#'):
     else:
         try:
             comicUrl = 'http:' + comicElem[0].get('src')
-            reComicUrl = re.search("/asset/", comicUrl) #Check if the comic is too complex for downloading, by searching for assets show up in them
-            if reComicUrl != None: #Code now skips comics where the first image is an asset.
+            reComicUrl = re.search("imgs.xkcd.com", comicUrl) #Code checks for images that don't start in imgs.xkcd.com
+            if reComicUrl == None: #If it wasn't from there...
                 prevLink = soup.select('a[rel="prev"]')[0]
                 url = 'http://xkcd.com' + prevLink.get('href')
-                reComicUrl = None
-                continue
+                continue #...skip the comic
             #Download the image
             print('Downloading image %s...' % (comicUrl))
             res = requests.get(comicUrl)
