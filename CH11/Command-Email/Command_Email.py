@@ -1,8 +1,8 @@
 import os
 import logging
-import time
 import selenium
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
 logging.basicConfig(level=logging.INFO, format = '%(levelname)s - %(message)s')
 logging.disable(logging.DEBUG)
@@ -33,17 +33,15 @@ passwordButton.click()
 composeButton = browser.find_element_by_class_name('z0')
 composeButton.click()
 
-    '''#Fill out the forms
+    #Fill out the forms
 toLine = browser.find_element_by_name('to')
 subjectLine = browser.find_element_by_name('subjectbox')
-emailBody = browser.find_element_by
-sendButton = browser.find_element_by
 
 toLine.send_keys(target)
-subjectLine.send_keys('Sent by command line :)')
-emailBody.send_keys(message)
+subjectLine.send_keys('Sent by command line :)' + Keys.TAB + message)
 
-sendButton.click()'''
-
+    #Send and quit the browser
+sendButton = browser.find_element_by_class_name('dC')
+sendButton.click()
 browser.quit()
 
