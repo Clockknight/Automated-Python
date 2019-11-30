@@ -1,5 +1,6 @@
 import os
 import logging
+import time
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -40,6 +41,6 @@ subjectLine = browser.find_element_by_name('subjectbox')
 toLine.send_keys(target)
 subjectLine.send_keys('Sent by command line :)' + Keys.TAB + message + Keys.TAB + Keys.ENTER)
 
-    #Send and quit the browser
-
+    #Wait a bit for the message to send, then quit the browser
+time.sleep(5)
 browser.quit()
