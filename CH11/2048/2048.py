@@ -7,7 +7,7 @@ browser = webdriver.Chrome()
 browser.get('https://gabrielecirulli.github.io/2048/')
 browser.implicitly_wait(10)
 
-game = browser.find_element_by_class_name('html')
+game = browser.find_element_by_tag_name('html')
 
 while True:
     game.send_keys(Keys.UP)
