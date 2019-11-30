@@ -10,14 +10,24 @@ Needed:
 
 Take multiple strings as inputs
  - Ask user to input text
- - Take text inputted when enter is pressed
- - print out the text inputted
+ - Store it as a variable for later
  - Do the above twice
 
 Using Selenium to log onto the email account
+- Open up selenium to mail.com
+- Enter address "https://www.mail.com/"
+- Click log in button
+- Enter the account "AutotheBoring"
+- Enter the password "Idontcare"
+- Submit
 
 Composing an email
+- Click "compose email" button
 
 Applying the strings to fields like target address and message
+- Apply target email variable to To field
+- Apply message to body field
+- Apply "Sent thanks to Automated Python" in Subject
 
 Sending the email
+- Click send button
