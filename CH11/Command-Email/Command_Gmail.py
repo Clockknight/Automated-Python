@@ -38,10 +38,8 @@ toLine = browser.find_element_by_name('to')
 subjectLine = browser.find_element_by_name('subjectbox')
 
 toLine.send_keys(target)
-subjectLine.send_keys('Sent by command line :)' + Keys.TAB + message)
+subjectLine.send_keys('Sent by command line :)' + Keys.TAB + message + Keys.TAB + Keys.ENTER)
 
     #Send and quit the browser
-sendButton = browser.find_element_by_class_name('dC')
-sendButton.click()
-browser.quit()
 
+browser.quit()
