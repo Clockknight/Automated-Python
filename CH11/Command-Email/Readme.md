@@ -1,12 +1,10 @@
-This program should:
+This program doesn't ask for any arguments in cmd, everything it needs it asks you for when it runs.
 
-Take two strings, one for a target email address, one for a message.
+The only real restriction is that you can't select anything when it composes the mail, or it'll select something unrelated.
 
-Use Selenium to log onto a prepared email and send the message string to the target email address.
+Enjoy!
 
-
-
-Needed:
+PLAN:
 
 Take multiple strings as inputs
  - Ask user to input text
@@ -15,8 +13,7 @@ Take multiple strings as inputs
 
 Using Selenium to log onto the email account
 - Open up selenium to mail.com
-- Enter address "https://www.mail.com/"
-- Click log in button
+- Enter address "https://www.gmail.com/"
 - Enter the account "AutotheBoring"
 - Enter the password "Idontcare"
 - Submit
@@ -26,8 +23,8 @@ Composing an email
 
 Applying the strings to fields like target address and message
 - Apply target email variable to To field
-- Apply message to body field
 - Apply "Sent thanks to Automated Python" in Subject
+- Apply message to body field
 
 Sending the email
 - Click send button
