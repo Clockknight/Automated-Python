@@ -3,7 +3,7 @@
 
 import requests, os, bs4, re
 
-url = 'https://xkcd.com/1525/'             #starting url
+url = 'https://xkcd.com'             #starting url
 os.makedirs('xkcd', exist_ok=True)  #store comics in ./xkcd
 while not url.endswith('#'):
     # Download the page.
@@ -34,7 +34,7 @@ while not url.endswith('#'):
             prevLink = soup.select('a[rel="prev"]')[0]
             url = 'http://xkcd.com' + prevLink.get('href')
             continue
-        
+
         #Save the image to ./xkcd.
         imageFile = open(os.path.join('xkcd', os.path.basename(comicUrl)), 'wb')
         for chunk in res.iter_content(100000):
