@@ -1,16 +1,14 @@
-
-
-bs4
+This code will take an input after starting, and begin downloading every image found under that
 
 Needed:
-- Take input to a link
-- Open link
-- scan for all a tags
-- confirm if download is okay Yes/No
-  - Yes
-  - for loop through the original scan
-  - linkRes for each <a> tag
-  - download each html file
+- Take input to a search term
+- go to imgur.com/search?q=''
 
-  - No
-  - Print thanks then break
+- Find all images
+  - Select all <img> tags
+    - take href, go to gallery pages
+
+- Download them
+  - find <.post-image img> (videos will be skipped)
+    - take the src if it exists
+    - save it with the alt as the file title
