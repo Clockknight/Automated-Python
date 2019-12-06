@@ -16,7 +16,8 @@ browser.get(url)
 browser.implicitly_wait(10)
 
 #Selenium finds all img elements
-images = browser.find_elements_by_css_selector('') #left off here
+images = browser.find_elements_by_css_selector('#image-list-link')  #find a tag with image-list-link class
+results = len(images)
 
 #Skips to end if no images are found.
 if results == 0:
@@ -44,16 +45,3 @@ else:
 #Close the program afterwards  
 browser.quit()
 sys.exit(0)
-
-
-
-
-
-
-
-
-
-
-
-
-            
