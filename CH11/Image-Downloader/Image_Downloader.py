@@ -9,14 +9,14 @@ import requests
 
 #Initialize Webdriver to browse imgur
 #query = 'http://imgur.com/search?q=' + input('Please input a term to search imgur for:\n')
-url = 'http://imgur.com/search?q=meme' #placeholder
+queryUrl = 'http://imgur.com/search?q=meme' #placeholder
 
 browser = webdriver.Chrome()
-browser.get(url)
-browser.implicitly_wait(10)
+browser.get(queryUrl)
+browser.implicitly_wait(2)
 
 #Selenium finds all img elements
-images = browser.find_elements_by_css_selector('#image-list-link')  #find a tag with image-list-link class
+images = browser.find_elements_by_class_name('image-list-link')  #find a tag with image-list-link class
 results = len(images)
 
 #Skips to end if no images are found.
@@ -35,8 +35,14 @@ else:
         for i in range(results):
             print('Downloading image #' + str(i+1) + '...')
             try:
-                #Go to the image and download it
-                print('filler')
+                #Go to the ith image
+                currentImage = images[i]
+                currentImage.send_keys(Keys.ENTER)
+                imageUrl = browser.current_url
+                browser.get(queryUrl)
+
+                #Use bs4 to scan the image
+                soup = imageUrl     #Complete this section
             except:
                 print('Bad download. Skipping...')
 
