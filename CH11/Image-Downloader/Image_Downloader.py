@@ -23,7 +23,7 @@ results = len(images)
 if results == 0:
     print('No results found.\nClosing program...')
 
-#Download confirmation 
+#Download confirmation
 else:
     print('Found ' + str(results) + ' images.')
     answer = input('Do you wish to download?\nYes/No\n')
@@ -42,12 +42,16 @@ else:
                 browser.get(queryUrl)
 
                 #Use bs4 to scan the image
-                soup = imageUrl     #Complete this section
+                res = requests.get(imageUrl)
+                res.raise_for_status()
+                soup = bs4.BeautifulSoup(res.text)
+                #find image with BeautifulSoup
+                #download image
             except:
                 print('Bad download. Skipping...')
 
 
 
-#Close the program afterwards  
+#Close the program afterwards
 browser.quit()
 sys.exit(0)
