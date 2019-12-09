@@ -8,8 +8,7 @@ from selenium.webdriver.common.keys import Keys
 import requests
 
 #Initialize Webdriver to browse imgur
-#query =  input('Please input a term to search imgur for:\n')
-query = 'meme' #placeholder
+query =  input('Please input a term to search imgur for:\n')
 queryUrl = 'http://imgur.com/search?q=' + query
 os.makedirs(str(query), exist_ok=True)
 
@@ -28,7 +27,7 @@ if results == 0:
 
 #Download confirmation
 print('Found ' + str(results) + ' images.')
-answer = 'Yes' #answer = input('Do you wish to download?\nYes/No\n')
+answer = input('Do you wish to download?\nYes/No\n')
 while (answer != 'Yes' and answer != 'No'):
     answer = input('\nInvalid answer, this program only reads either Yes or No.\nDo you wish to download?\nYes/No\n')
 if answer == 'No':
@@ -57,7 +56,7 @@ else:
                 srcRes.raise_for_status()
 
                 #download image
-                imageDownload = open(os.path.join('results', os.path.basename('Result #' + str(1+i)), 'wb'))
+                imageDownload = open(os.path.join(str(query), os.path.basename(source)), 'wb')
                 for chunk in srcRes.iter_content(100000):
                     imageDownload.write(chunk)
                 imageDownload.close()
