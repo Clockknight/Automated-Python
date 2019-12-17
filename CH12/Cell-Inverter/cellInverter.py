@@ -24,12 +24,14 @@ if sheetHeight > sheetWidth:
 size = sheetWidth
 
 #For each row, invert cells equal to current row - 1 (row # 5 will invert 4 cells with column 5)
-    #For loop, i in dimension
-    #Nested For loop, j in dimension - 1
-    #Take value of cell in (i, j), store as sourceValue
-    #Take value of cell in (j, i), store as targetValue
-    #cell(j, i).value = sourceValue
-    #cell(i, j).value = targetValue
+for i in range(1, size):    #For loop, i in dimension
+    for j in range(1, i):    #Nested For loop, j in dimension - 1
+        #Store values
+        sourceValue = sheet.cell(row=i, column=j).value #Take value of cell in (i, j), store as sourceValue
+        targetValue = sheet.cell(row=j, column=i).value#Take value of cell in (j, i), store as targetValue
+        #Apply stored values
+        sheet.cell(row=j, column=i).value = sourceValue
+        sheet.cell(row=i, column=j).value = targetValue
 
 #Save
-book.save()
+book.save('inverted'+str(sys.argv[1]))
