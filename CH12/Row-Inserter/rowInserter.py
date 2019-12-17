@@ -17,17 +17,22 @@ sheet = book.active
 sheetWidth = sheet.max_column
 sheetHeight = sheet.max_row
 if baseLine >= sheetHeight:
-    print("Your first integer was too great. There are only %d rows in %s." % (sheetHeight,str(sys.argv[3])))
+    print("Your first integer was too large. There are only %d rows in %s." % (sheetHeight,str(sys.argv[3])))
+    sys.exit()
 
+print('Inserting %d blank rows after row #%d...' % (expansion, baseLine))
 #Copy values down the sheet
-for i in range(1, sheetHeight-baseLine):
-    for j in range(1, sheetWidth):
+for i in range(1, sheetHeight - baseLine + 1):
+    for j in range(1, sheetWidth + 1):
         sheet.cell(row=sheetHeight-i+1+expansion, column=j).value = sheet.cell(row=sheetHeight-i+1, column=j).value
 
 #Clear cells for the rows needed
-for i in range(1, expansion):
-    for j in range(1, sheetWidth):
+print('Clearing out old data in rows %d to %d...' % (baseLine+1, baseLine+1+expansion))
+for i in range(1, expansion+1):
+    for j in range(1, sheetWidth + 1):
         sheet.cell(row=baseLine+i, column=j).value = ''
 
 #Save
-book.save('inserted'+str(sys.argv[3]))
+newname = 'inserted'+str(sys.argv[3])
+book.save(newname)
+print('Done! File saved as ' + newname)
