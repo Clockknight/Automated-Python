@@ -32,6 +32,13 @@ for file in fileList:
     pdfWriter.write(resultPdf)
     resultPdf.close()
 
-    #Decrypt the new file
+    encryptedPdf = open(newFilename, 'rb')
+    newReader = PyPDF2.PdfFileReader(encryptedPdf)
 
-    #Delete the file
+    #Decrypt the new file as a check
+    if newReader.decrypt('swordwish') == 1:
+        pdfFile.close()
+        #Delete the file
+        os.remove(file)
+
+    encryptedPdf.close()
