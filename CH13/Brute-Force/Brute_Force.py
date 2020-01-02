@@ -2,21 +2,24 @@ import os
 import sys
 import PyPDF2
 
+passwordIteration = 0
+
 processFailure = True
 
-lockedFile = PyPDF2.PdfFileReader(open('encryptedminutes.pdf', 'rb'))
+encryptedFile = open('.\\encryptedminutes.pdf', 'rb')
+encryptedReader = PyPDF2.PdfFileReader(encryptedFile)
 
+dictFile = open('.\\dictionary.txt', 'r')#Read from dictionary.txt
 
+for item in dictFile: #For looping through passwords
+    password = item[:-1]    #Each line is [:-2], to account for the \n at the end
+    passwordIteration += 1
+    if (passwordIteration % 25) == 0:
+        print('Testing password #%d, [%s]' % (passwordIteration, password))
 
-#Read from dictionary.txt
-dictFile = open(dictionary.txt, 'r')
-
-for line in dictFile: #For looping through passwords
-    password = line[:-2]    #Each line is [:-2], to account for the \n at the end
-    print('Trying %s as a password...' % password)
     #Break if decrypt returns 1
     if encryptedReader.decrypt(password) == 1:
-        print('Success! The password was %s' % password)
+        print('Success! The password was %s, on line #%d' % (password, passwordIteration))
         processFailure = False
         break
 
