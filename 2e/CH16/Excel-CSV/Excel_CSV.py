@@ -14,7 +14,7 @@ def main():
 
 def convert(root, fileTitle):
     source = os.path.join(root, fileTitle)#The source/xlsx file is here, at root\\fileTitle
-    csvBase = fileTitle[-5:]#csvBase is the name of the file with no extensions
+    csvBase = fileTitle[:-5]#csvBase is the name of the file with no extensions
 
     book = openpyxl.load_workbook(source)#Begin declaring excel related variables
     sheets = len(book.sheetnames)#Find the amount of sheets in the workbook
@@ -27,17 +27,21 @@ def convert(root, fileTitle):
 
         csvName = csvBase + sheetName + '.csv'
         output = os.path.join(root, csvName)
-        target = open()
+        target = open(csvName, 'w+', newline='')
+        targetWriter = csv.writer(target)
 
-        for y in range(0, sheetHeight):
+
+        for y in range(1, sheetHeight+1):
             rowList = []#Clear the rowList variable before moving onto the next row
 
-            for x in range(0, sheetWidth):
-                    rowList[x] = sheet.cell(row=y, column=x).value#Gather values from the sheet's row
+            for x in range(1, sheetWidth+1):
+                rowList.append(sheet.cell(row=y, column=x).value)#Gather values from the sheet's row
 
 
+            targetWriter.writerow(rowList)
 
-        # 3) 1 csv file per excel sheet
+        print('Writing to ' + output + '...')
+        target.close()
 
 
 
