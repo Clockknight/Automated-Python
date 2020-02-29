@@ -1,25 +1,27 @@
 Q: 1. What are some features Excel spreadsheets have that CSV spread-sheets don’t?
 
-A:
+A: Excel stores style information about the data inside cellls
 
 Q: 2. What do you pass to csv.reader() and csv.writer() to create reader and writer objects?
 
-A:
+A: Pass a file object, from open()
 
 Q: 3. What modes do File objects for reader and writer objects need to be opened in?
 
-A:
+A: File objects need to be opened in 'rb' mode, and 'wb' for reader and writer respectively
 
 Q: 4. What method takes a list argument and writes it to a CSV file?
 
-A:
+A: writerow()
 
 Q: 5. What do the delimiter and lineterminator keyword arguments do?
 
-A:
+A: Changes a string to several cells in a single row, or several rows, respectively
 
 Q: 6. What function takes a string of JSON data and returns a Python data structure?
 
-A:
+A: json.loads()
 
 Q: 7. What function takes a Python data structure and returns a string of JSON data?
+
+A: json.dumps()
