@@ -1,0 +1,39 @@
+Q: 1. What three files do you need for EZSheets to access Google Sheets?
+
+A: Credentials file, and two token files, one for Google drive and one from Google Sheets respectively.
+
+Q: 2. What two types of objects does EZSheets have?
+
+A: .Spreadsheet and .Sheet objects
+
+Q: 3. How can you create an Excel file from a Google Sheet spreadsheet?
+
+A: Spreadsheet.downloadAsExcel()
+
+Q: 4. How can you create a Google Sheet spreadsheet from an Excel file?
+
+A: ezsheets.upload(), pass the file name of the excel file
+
+Q: 5. The ss variable contains a Spreadsheet object. What code will read data from the cell B2 in a sheet titled “Students”?
+
+A: ss['Students']['B2']
+
+Q: 6. How can you find the column letters for column 999?
+
+A: ezsheets.getColumnLetterOf(999)
+
+Q: 7. How can you find out how many rows and columns a sheet has?
+
+A: Access the Sheet's rowCount and columnCount properties
+
+Q: 8. How do you delete a spreadsheet? Is this deletion permanent?
+
+A: Sheet.delete(), only permanent if permanent=True is passed through
+
+Q: 9. What functions will create a new Spreadsheet object and a new Sheet object, respectively?
+
+A: createSpreadsheet(), and createSheet()
+
+Q: 10. What will happen if, by making frequent read and write requests with EZSheets, you exceed your Google account’s quota?
+
+A: EZsheets will "throttle" method calls
