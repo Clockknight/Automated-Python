@@ -1,31 +1,33 @@
 Q: 1. What is the Unix epoch?
 
-A:
+A: The "start" of timemeasured by Unix
 
 Q: 2. What function returns the number of seconds since the Unix epoch?
 
-A:
+A: time.time()
 
 Q: 3. How can you pause your program for exactly 5 seconds?
 
-A:
+A: time.sleep(5)
 
 Q: 4. What does the round() function return?
 
-A:
+A: It rounds the argument to the closest integer
 
 Q: 5. What is the difference between a datetime object and a timedelta object?
 
-A:
+A: datetime is a moment in time, and a timedelta is a period of time
 
 Q: 6. Using the datetime module, what day of the week was January 7, 2019?
 
-A:
+A: datetime.datetime(2019, 1, 7).weekday() returns 0. This means that day was a monday.
 
 Q: 7. Say you have a function named spam(). How can you call this function and run the code inside it in a separate thread?
 
-A:
+A: threadObj = threading.Thread(target=spam)
+
+then call threadObj.start()
 
 Q: 8. What should you do to avoid concurrency issues with multiple threads?
 
-A:
+A: Make sure they don't share variables in the other thread
