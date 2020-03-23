@@ -1,4 +1,14 @@
-url = 'https://www.giantitp.com/comics/oots1194.html#'
+import bs4
+
+file = './target.txt'
+infoArray = []
+
+target = open(file, 'r+')
+infoArray = target.readlines()
+
+if infoArray[0] == '':
+    url = 'https://www.giantitp.com/comics/oots0001.html'
+else:
 
 #Go to URL
 
