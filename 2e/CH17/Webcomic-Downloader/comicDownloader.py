@@ -17,15 +17,18 @@ def downloadPage(inputSoup):
 
     for image in imageList:
         source = image.get('src')
-        print(source[:36])
         if source[:36] == 'https://i.giantitp.com//comics/oots/':
             comicUrl = source[36:]
-            print(comicUrl)
+
             #Save the image to ./Order Of The Stick.
-            imageFile = open(os.path.join('Order Of the Stick', os.path.basename(comicUrl)), 'wb+')
+            imageFile = open(os.path.join('Order Of the Stick', os.path.basename(comicUrl)), 'wb')
             for chunk in res.iter_content(100000):
                 imageFile.write(chunk)
             imageFile.close()
+
+#Self iterating function to download all pages after initial Page
+def downloadNext(inputSoup):
+    print('placeholder')
 
 #Pull a target url if there are any, from inside the file
 target = open(file, 'r+')
@@ -61,21 +64,8 @@ try:
     if inclusiveBool:
         downloadPage(initialSoup)
 
-
-
 except Exception as exc:
     print('There was problem: %s' % (exc))
 
-#Find Next Page Button
-    #Find an a tag
-    #Find one with a src to the next page gif
-
-#Check if url points to the same url that the site is currently on
-
-#If not, download image to desktop
-    #Image should be '''https://i.giantitp.com//comics/oots/oots...'''
-    #Then move to the next page
-
 #Finish the program
-    #Save in cwd
     #Update target.txt
