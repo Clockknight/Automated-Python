@@ -28,10 +28,26 @@ def downloadPage(inputSoup):
                 imageFile.write(chunk)
             imageFile.close()
 
+            return 0
+
 #Self iterating function to download all pages after initial Page
 def downloadNext(inputSoup):
-    print('placeholder')
 
+    downloadPage(inputSoup)
+
+    #Find 'next button'
+        #Next comic button has "Next Comic" for a title
+
+    #Find where it's directing to
+
+    #make that the target of nextSoup soup object
+    res = requests.get(nextPage)
+
+    #downloadNext(nextSoup)
+
+    return downloadNext(nextSoup)
+
+#VVVV Main codeblock starts HERE VVVV
 #Pull a target url if there are any, from inside the file
 target = open(file, 'r+')
 infoArray = target.readlines()
