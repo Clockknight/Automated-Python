@@ -21,6 +21,8 @@ def downloadPage(inputSoup):
             comicUrl = source[36:]
 
             #Save the image to ./Order Of The Stick.
+            print('Downloading ' + comicUrl + '...')
+            res = requests.get(source)
             imageFile = open(os.path.join('Order Of the Stick', os.path.basename(comicUrl)), 'wb')
             for chunk in res.iter_content(100000):
                 imageFile.write(chunk)
