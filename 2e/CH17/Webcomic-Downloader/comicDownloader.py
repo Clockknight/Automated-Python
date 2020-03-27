@@ -68,15 +68,20 @@ def downloadNext(inputSoup, iterCount):
                     #Find the matching a and pull its href
                     confirmedElem = aTags[imgIndex-1]
                     confirmedHref = confirmedElem.get('href')
+                if title == 'Latest Comic':
+                    #Find the most recent comic to compare with
+                    latestElem = aTags[imgIndex-1]
+                    latestHref = latestElem.get('href')
 
     nextPage = 'https://www.giantitp.com/comics/' + confirmedHref
+    latestPage = 'https://www.giantitp.com' + latestHref
 
     #make that the target of nextSoup soup object
     res = requests.get(nextPage)
     nextSoup = bs4.BeautifulSoup(res.text, 'html.parser')
 
-    if nextSoup == inputSoup:
-        return nextPage
+    if confirmedHref == latestHref:
+        return latestPage
     else:
         return downloadNext(nextSoup, iterCount)
 
