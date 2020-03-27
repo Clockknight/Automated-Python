@@ -16,7 +16,7 @@ def downloadPage(inputSoup, iterCount):
 
             #Save the image to ./Order Of The Stick.
             #Only
-            if iterCount > 25:
+            if iterCount > 24:
                 print('Downloading ' + comicUrl + '...')
                 iterCount = 0
 
@@ -33,34 +33,50 @@ def downloadNext(inputSoup, iterCount):
 
     #Keep track of the iterations that have occured
     iterCount += 1
+    imgIndex = 0
     confirmedHref = ''
     imgTags = []
 
     #Download the comic
-    downloadPage(inputSoup, iterCount)
+    iterCount = downloadPage(inputSoup, iterCount)
 
 
     #Find 'next button'
-        #Find all a tags with img tags
+    #Find all a tags with img tags
     aTags = inputSoup.select('a')
-        #Select all img tags within
+
+    #Select all img tags within
     for tag in aTags:
-        result = ''
+        imgElem = tag.select('img')
 
+        if len(imgElem) == 0:
+            result = ''
+        else:
+            result = imgElem
         imgTags.append(result)
-        #Select each img tag
-        #Find the one with the next comic title
-        #Find the matching a
-        #Pull that a tag's href
-    pageLink = confirmedHref
 
-    #Find where it's directing to
+    #Select each img tag
+    for image in imgTags:
+        imgIndex += 1
+        if image != '':
+            title = image[0].get('title')
+
+
+            #Find the one with the next comic title
+            if title != '':
+                if title == 'Next Comic':
+                    #Find the matching a and pull its href
+                    confirmedElem = aTags[imgIndex-1]
+                    confirmedHref = confirmedElem.get('href')
+
+    nextPage = 'https://www.giantitp.com/comics/' + confirmedHref
 
     #make that the target of nextSoup soup object
     res = requests.get(nextPage)
+    nextSoup = bs4.BeautifulSoup(res.text, 'html.parser')
 
     if nextSoup == inputSoup:
-        return pageLink
+        return nextPage
     else:
         return downloadNext(nextSoup, iterCount)
 
@@ -109,17 +125,23 @@ def main():
         initialSoup = bs4.BeautifulSoup(res.text, 'html.parser')
 
         #Download current page's comic
+        print('')
         url = downloadNext(initialSoup, 0)
+        print('Downloading ' + url + '...')
+        print('\nComplete! Enjoy catching up to Order of The Stick!')
 
 
     #Exception clause
     except Exception as exc:
         print('There was problem: %s' % (exc))
 
-    #Finish the program
-        #Update target.txt
+    #Finish the program, save the most recently downloaded comic
+    target = open(file, 'w')
+    target.write(url)
+    target.close()
 
 main()
+
 
 '''
 Sandbox Codeblock
