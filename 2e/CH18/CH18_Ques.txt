@@ -1,19 +1,39 @@
 1. What is the protocol for sending email? For checking and receiving email?
 
+SMTP, IMAP respectively
+
 2. What four smtplib functions/methods must you call to log in to an SMTP server?
+
+smtplib.SMTP(), smtpObj.ehlo(), smptObj.starttls(), and smtpObj.login()
 
 3. What two imapclient functions/methods must you call to log in to an IMAP server?
 
+imapclient.IMAPClient() and imapObj.login()
+
 4. What kind of argument do you pass to imapObj.search()?
+
+A list made up of IMAP keyword strings
 
 5. What do you do if your code gets an error message that says got more than 10000 bytes?
 
+Assign the variable imaplib._MAXLINE a larger value
+
 6. The imapclient module handles connecting to an IMAP server and finding emails. What is one module that handles reading the emails that imapclient collects?
+
+pyzmail reads downloaded emails
 
 7. When using the Gmail API, what are the credentials.json and token.json files?
 
+credentials.json and token.json select the gmail account to access and use.
+
 8. In the Gmail API, what’s the difference between “thread” and “message” objects?
+
+A message is a single email, where as a thread is multiple emails being sent back and forth.
 
 9. Using ezgmail.search(), how can you find emails that have file attachments?
 
+include 'has:attachment' in the string passed to search()
+
 10. What three pieces of information do you need from Twilio before you can send text messages?
+
+Twilio account SID number, authentication token number, and a Twilio phone number
