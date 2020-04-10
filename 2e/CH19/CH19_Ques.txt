@@ -1,0 +1,35 @@
+1. What is an RGBA value?
+
+Numerical values indicating Red, Green, Blue, and Alpha values respectively
+
+2. How can you get the RGBA value of 'CornflowerBlue' from the Pillow module?
+
+ImageColor.getcolor('CornflowerBlue', 'RGBA')
+
+3. What is a box tuple?
+
+A tuple value of four integers, each one representing height, width, and most upper left x and y values.
+
+4. What function returns an Image object for, say, an image file named zophie.png?
+
+Image.open('zophie.png')
+
+5. How can you find out the width and height of an Image object’s image?
+
+imageObj.size is a tuple of the width and the height
+
+6. What method would you call to get Image object for a 100×100 image, excluding the lower-left quarter of it?
+
+imageObj.crop((0, 50, 50, 50))
+
+7. After making changes to an Image object, how could you save it as an image file?
+
+imageObj.save('filename.format')
+
+8. What module contains Pillow’s shape-drawing code?
+
+The ImageDraw module
+
+9. Image objects do not have drawing methods. What kind of object does? How do you get this kind of object?
+
+ImageDraw objects have drawing methods. Pass the Image object through ImageDraw.Draw()
